@@ -64,3 +64,21 @@ function renderBoard(board){
     }
     elBoard.innerHTML = strHTML;
 }
+
+//countNegs
+function countNegs(cellI, cellJ,board){
+    var mineCountAroundCell = 0;
+
+    for(var i = cellI -1; i < cellI; i++){
+        if(i < 0 || i >= board.length) continue;
+
+        for(var j = cellJ -1; j <= cellJ + 1; j++){
+            if(j < 0 || j >= board[i].length) continue;
+
+            if(i === cellI && j === cellJ) continue; 
+
+            if(board[i][j].isMine === true)count++;
+        }
+    }
+    return mineCountAroundCell;
+}
