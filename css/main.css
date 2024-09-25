@@ -1,4 +1,4 @@
-body {
+ body {
     text-align: center;
     background-color: rgb(232, 214, 160);
 }
@@ -6,4 +6,17 @@ body {
 h1 {
     font-family: "Fascinate Inline", system-ui;
     color: rgb(44, 33, 39);
+}
+
+table {
+    margin: 0 auto;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #000;
+    text-align: center;
+    font-size: 24px;
+    background-color: rgb(163, 163, 163);
 }

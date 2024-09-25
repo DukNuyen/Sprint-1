@@ -21,3 +21,15 @@ function getRandomInt(min, max) {
     const maxFloored = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
+
+function start() {
+
+    x = setInterval(timer, 10);
+    renderQuests();
+    gCurrQuestIdx++
+} /* Start */
+
+function stop() {
+    clearInterval(x);
+    GstartStop = !GstartStop
+} /* Stop */

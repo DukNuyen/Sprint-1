@@ -5,7 +5,17 @@ const MINE = '💣'
 const FLAG = '🚩'
 const HINT = '🧙🏼'
 
-var gBoard = buildBoard()
+var gBoard
+
+//onInit
+function onInit(){
+    gBoard = buildBoard()
+    placeMines(gBoard)
+    setMinesNegsCount(gBoard)
+    renderBoard(gBoard)
+}
+//console.log('Game initialized');
+
 
 //buildBoard
 function buildBoard(){
@@ -53,10 +63,10 @@ function renderBoard(board){
         strHTML += '<tr>'
         for(var j = 0; j < board[i].length; j++){
             var cell;
-            if(!board[i][j].isMine){
-                cell = ''
-            }else{
+            if(board[i][j].isMine){
                 cell = '💣'
+            }else{
+                cell = board[i][j].minesAroundCount || '';
             }
             strHTML += '<td>' + cell + '</td>'
         }
@@ -64,21 +74,37 @@ function renderBoard(board){
     }
     elBoard.innerHTML = strHTML;
 }
+console.log(board);
+
 
 //countNegs
 function countNegs(cellI, cellJ,board){
-    var mineCountAroundCell = 0;
+    var cellNegsMinesCount = 0;
 
-    for(var i = cellI -1; i < cellI; i++){
+    for(var i = cellI-1; i < cellI+1; i++){
         if(i < 0 || i >= board.length) continue;
 
         for(var j = cellJ -1; j <= cellJ + 1; j++){
             if(j < 0 || j >= board[i].length) continue;
 
-            if(i === cellI && j === cellJ) continue; 
+            if(i === cellI && j === cellJ) continue; //עצמו
 
-            if(board[i][j].isMine === true)count++;
+            if(board[i][j].isMine === true)cellNegsMinesCount++;
         }
     }
-    return mineCountAroundCell;
+    //console.log(`Cell(${cellI},${cellJ}) has ${cellNegsMinesCount} mines around.`);
+    return cellNegsMinesCount;
 }
+
+
+//setMinesNegsCount
+function setMinesNegsCount(board){
+    for(var i = 0; i < board.length; i++){
+        for(var j = 0; j < board[i].length; j++){
+            var neighborMinesCount = countNegs(i,j,board)
+            board[i][j].minesAroundCount = neighborMinesCount;
+        }
+    }
+}
+
+//onCellClicked
