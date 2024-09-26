@@ -15,7 +15,6 @@ function createMat(rows, cols) {
 }
 
 //randomInt
-
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);

@@ -20,3 +20,29 @@ td {
     font-size: 24px;
     background-color: rgb(163, 163, 163);
 }
+
+td.reveled{
+    background-color:  rgb(251, 251, 251);
+    color:#000;
+}
+
+td.mine {
+    background-color: rgb(151, 5, 109);
+    font-weight: bold; 
+}
+
+.level-btn{
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    font-weight: bold; 
+    transition: 0.3s;
+
+}
+.level-btn:hover{
+    background-color: rgb(134, 36, 103);
+    border-radius: 4px;
+    transition: 0.3s;
+
+}

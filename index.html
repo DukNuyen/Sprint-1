@@ -12,13 +12,13 @@
 <body onload="onInit()">
     <div class="game-wrapper">
 
-        <h1>Mine Sweeper</h1>
-        <h2 id="smiley" onclick="resetGame()">😃</h2>
+        <h1>Mine Sweeper💣</h1>
+        <h2 id="smiley" onclick="onInit()">😃</h2>
 
         <div class="game-levels">
-            <button class="level-btn">Easy</button>
-            <button class="level-btn">Medium</button>
-            <button class="level-btn">Extreame</button>
+            <button class="level-btn" onclick="setLevel(4,2)">Easy</button>
+            <button class="level-btn" onclick="setLevel(8,14)">Medium</button>
+            <button class="level-btn" onclick="setLevel(12,32)">Extreme</button>
         </div>
 
         <div>
