@@ -3,7 +3,6 @@
 const EMPTY = ''
 const MINE = '💥'
 const FLAG = '🚩'
-const HINT = '🧙🏼'
 
 var gBoard
 var gLevel = {
@@ -12,10 +11,12 @@ var gLevel = {
 }
 var gFirstMove;
 var gLives;
+var gGameOver = false
 
 //onInit
 function onInit(){
     gBoard = buildBoard(gLevel.SIZE);
+    gGameOver = false;
     gFirstMove = true
     gLives = gLevel.SIZE === 4 ? 1 : 3; //easy 1 live
     liveDisplay();
@@ -126,6 +127,8 @@ function setMinesNegsCount(board){
 
 //onCellClicked
 function onCellClicked(i,j){
+    if(gGameOver)return
+
     var cell = gBoard[i][j]
 
     if(cell.isRevealed)return //כלום
@@ -145,6 +148,7 @@ function onCellClicked(i,j){
         if(gLives === 0){
             showAllMines(gBoard)
             document.getElementById('smiley').innerHTML = '💀';
+            gGameOver = true;
             console.log('Mine triggerd! Game over!')
         } 
     }else{
@@ -170,6 +174,7 @@ function showAllMines(board){
 function onCellClickFlag(event, i, j){
 
     event.preventDefault()
+    if(gGameOver)return;
 
     var cell = gBoard[i][j]
     if(cell.isRevealed) return
