@@ -3,6 +3,8 @@
 const EMPTY = ''
 const MINE = '💥'
 const FLAG = '🚩'
+const WIN_SOUND = new Audio("sounds/siu.mp3");
+
 
 var gBoard
 var gLevel = {
@@ -12,6 +14,7 @@ var gLevel = {
 var gFirstMove;
 var gLives;
 var gGameOver = false
+
 
 //onInit
 function onInit(){
@@ -23,9 +26,10 @@ function onInit(){
     renderBoard(gBoard);
 
     document.getElementById('smiley').innerHTML = '😃';
+    document.getElementById('win').innerHTML = '';
+
 }
 //console.log('Game initialized');
-
 
 //buildBoard
 function buildBoard(size){
@@ -204,7 +208,10 @@ function victoryChack(board){
 
     if(allMinesFlagged && allSafeCellsRevealed) {
         document.getElementById('smiley').innerHTML = '😎';
-        alert("Siuuuuuuu you won!🏆🍾");
+        document.getElementById('win').innerHTML = 'WINNER!';
+
+        WIN_SOUND.play()
+        //alert("Siuuuuuuu you won!🏆🍾");
     }
 }
 

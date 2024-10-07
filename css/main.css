@@ -80,3 +80,10 @@ footer {
     font-size: 20px;
     color:rgb(159, 131, 98);
 }
+
+#win{
+    font-family: "Press Start 2P", system-ui;
+    color:rgba(232, 203, 96, 0.861);
+    transition: 0.4s;
+    -webkit-text-stroke: 1px rgba(172, 148, 30, 0.861);
+}
